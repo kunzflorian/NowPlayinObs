@@ -1,4 +1,22 @@
-﻿.recommendation-artist {
+﻿body{
+    background-color:transparent;
+}
+
+.recommendation-headline:before {
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #ff007b;
+    display: inline-block;
+    width: auto;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    content: "ql streamers"
+}
+
+.recommendation-artist {
     border: 0px solid transparent;
     font-family: Arial;
     font-size: 38px;
@@ -16,4 +34,10 @@
 
 .recommendation-item {
     border: 0px solid transparent;
+    
+}
+
+.recommendation-image {    
+    max-height: 430px;
+    max-width: 430px;    
 }

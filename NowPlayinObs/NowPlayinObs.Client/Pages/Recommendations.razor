@@ -1,4 +1,5 @@
 ﻿@page "/recommendations"
+@using System.Timers
 @rendermode InteractiveWebAssembly
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
@@ -15,18 +16,40 @@
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script src="_content/Blazor.Bootstrap/blazor.bootstrap.js"></script>
 
-<Carousel>
-    <CarouselItem Active="true" Class="recommendation-item">
-        <div class="recommendation-artist">dropbyn owe</div>
-        <Image Src="/Recommendations/wuffnuffs_tp.png" />
+<div class="recommendation-headline"/>
+<Carousel @ref="_carousel" ShowPreviousNextControls="false" Interval="3000">
+    <CarouselItem Class="recommendation-item">
+        <div class="recommendation-artist">wuffnuffs</div>
+        <div Class="recommendation-image">
+            <Image Src="/Recommendations/wuffnuffs.png" />
+        </div>
+
     </CarouselItem>
-    <CarouselItem>
-        <Image Src="_content/BlazorBootstrap.Demo.RCL/images/slide-02.png" />
-    </CarouselItem>
-    <CarouselItem>
-        <Image Src="_content/BlazorBootstrap.Demo.RCL/images/slide-03.png" />
+    <CarouselItem Active="true">
+        <div class="recommendation-artist">juicedrumandbass</div>
+        <div Class="recommendation-image">
+            <Image Src="/Recommendations/juicedrumandbass.png" />
+        </div>
     </CarouselItem>
 </Carousel>
-@code {
 
+@code {
+    Carousel _carousel = default!;
+    Timer _timer = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        _timer = new Timer(30000);
+        _timer.Elapsed += OnTimerElapsed;
+        _timer.Enabled = true;
+
+    }
+
+    private void OnTimerElapsed(object? sender, ElapsedEventArgs e)
+    {
+        _carousel.ShowPreviousItemAsync();
+
+    }
 }

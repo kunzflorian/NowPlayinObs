@@ -2,6 +2,7 @@
 @rendermode InteractiveWebAssembly
 @using NowPlayinObs.Domain
 @using Microsoft.AspNetCore.SignalR.Client
+@using NowPlayinObs.Hubs
 @inject NavigationManager Navigation
 @inject HttpClient Http
 
@@ -22,7 +23,7 @@
         _engine.Bind("Artist", () => _currentTrack.Artist);
 
         _hubConnection = new HubConnectionBuilder()
-            .WithUrl(Navigation.ToAbsoluteUri("/nowplayinhub"))
+            .WithUrl(Navigation.ToAbsoluteUri(NowPlayinHubDefaults.NOWPLAYIN_HUB))
             .Build();
 
         RenderHtml();

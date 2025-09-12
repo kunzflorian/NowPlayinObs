@@ -17,15 +17,16 @@ public static class NowPlayinExtension
                 ["application/octet-stream"]);
         });
 
-        services.AddSingleton<NowPlayinService>();
-
         var config = configuration.GetSection("NowPlayin").Get<NowPlayinConfig>();
         if (config is not null)
             services.AddSingleton(config);
         else
             throw new Exception("config not found");
 
+        services.AddSingleton<NowPlayinService>();
         services.AddHostedService<NowPlayinWorker>();
+
+        services.AddSingleton<IRecommendationService, RecommendationService>();
 
         services.AddHttpClient();   
         services.ConfigureHttpClientDefaults(o => {
@@ -38,8 +39,8 @@ public static class NowPlayinExtension
 
     public static WebApplication UseNowPlayin(this WebApplication app)
     {
-        app.UseResponseCompression();
-        app.MapHub<NowPlayinHub>("/nowplayinhub");
+        app.UseResponseCompression();        
+        app.MapHub<NowPlayinHub>(NowPlayinHubDefaults.NOWPLAYIN_HUB);
         return app;
     }
 }

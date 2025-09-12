@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NowPlayinObs.Domain;
+using NowPlayinObs.Hubs;
 using System.Web;
 
 namespace NowPlayinObs.Services;
@@ -29,7 +30,7 @@ public class NowPlayinWorker(
         _logger.LogInformation("Reading live list from: '{endpoint}'", _nowPlayinConfig.PlaylistUrl);
 
         _hubConnection = new HubConnectionBuilder()
-         .WithUrl($"{urlHub}/nowplayinhub")
+         .WithUrl($"{urlHub}{NowPlayinHubDefaults.NOWPLAYIN_HUB}")
          .Build();
 
         await _hubConnection.StartAsync();

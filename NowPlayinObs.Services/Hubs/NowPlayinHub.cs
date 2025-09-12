@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using NowPlayinObs.Domain;
 using NowPlayinObs.Services;
 
 namespace NowPlayinObs.Hubs;
@@ -17,8 +18,6 @@ public class NowPlayinHub : Hub
         await Clients.All.SendAsync("ReceiveNowPlayin", trackInfo);
     }
 
-
-  
     public async Task GetNowPlayin()
     {
         var currentTrack = await _nowPlayinService.GetCurrentTrack();

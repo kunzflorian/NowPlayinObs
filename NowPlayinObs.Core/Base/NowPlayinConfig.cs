@@ -1,4 +1,4 @@
-﻿namespace NowPlayinObs.Services;
+﻿namespace NowPlayinObs;
 
 public class NowPlayinConfig
 {

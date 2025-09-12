@@ -1,6 +1,9 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.AspNetCore.SignalR.Client;
-using System;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NowPlayinObs.Domain;
 using System.Web;
 
 namespace NowPlayinObs.Services;

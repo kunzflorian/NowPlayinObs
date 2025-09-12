@@ -1,4 +1,4 @@
-﻿namespace NowPlayinObs;
+﻿namespace NowPlayinObs.Domain;
 
 public class TrackInfo : IEquatable<TrackInfo>
 {

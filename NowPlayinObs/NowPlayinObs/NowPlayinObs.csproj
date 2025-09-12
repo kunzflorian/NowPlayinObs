@@ -7,9 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\NowPlayinObs.Services\NowPlayinObs.Services.csproj" />
     <ProjectReference Include="..\NowPlayinObs.Client\NowPlayinObs.Client.csproj" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.12.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.9" />
   </ItemGroup>
 
   <ItemGroup>

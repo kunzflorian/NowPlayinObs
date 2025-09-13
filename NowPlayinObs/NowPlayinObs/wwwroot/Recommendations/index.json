@@ -1,12 +1,12 @@
 [
 	{
 		"Name": "wuffnuffs",
-		"ImageFile": "wuffnuffs.png",
+		"ImageFile": "/Recommendations/wuffnuffs.png",
 		"CheckUrl": "twitch.tv/wuffnuffs"
 	},
 	{
 		"Name": "juicedrumandbass",
-		"ImageFile": "juicedrumandbass.png",
+		"ImageFile": "/Recommendations/juicedrumandbass.png",
 		"CheckUrl": "twitch.tv/juicedrumandbass"
 	}
 ]

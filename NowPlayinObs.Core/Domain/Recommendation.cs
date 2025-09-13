@@ -12,6 +12,7 @@ public class Recommendation
     public string ImageFile { get; set; } = string.Empty;
     public string? CheckUrl { get; set; }
     public string? CustomShoutText { get; set; }
+    public bool IsFirst { get; set; }
 
     public override string ToString() => Name;
 }

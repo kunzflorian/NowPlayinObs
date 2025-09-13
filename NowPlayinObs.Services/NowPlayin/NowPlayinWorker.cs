@@ -50,10 +50,11 @@ public class NowPlayinWorker(
             catch (Exception ex) 
             {
                 await Task.Delay(_nowPlayinConfig.ErrorIntervall, stoppingToken);
-                _logger.LogError("test {test}", ex.ToString());
+                _logger.LogError("Publishing new track failed {ex}", ex.ToString());
             }
-            //await _hubConnection.SendAsync("SendMessage", "SYSTEM", $"The time is: {DateTime.Now}");            
         }
+
+        await _hubConnection.StopAsync();
     }
 
     private async Task<TrackInfo> GetSeratoInfo()

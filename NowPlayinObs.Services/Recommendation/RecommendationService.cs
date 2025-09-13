@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using NowPlayinObs.Domain;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Json;
 
@@ -14,7 +15,7 @@ public class RecommendationService(
     private readonly HttpClient _httpClient = httpClient;
     private readonly List<Recommendation> _recommendations = [];
 
-    public async Task<IEnumerable<Recommendation>> GetRecommendations()
+    public async Task<IEnumerable<Recommendation>> GetRecommendationsAsync()
     {
         if (_recommendations.Count <= 0)
             await InitializeAsync();
@@ -26,11 +27,13 @@ public class RecommendationService(
     {
         try
         {
-            var recommendations = await _httpClient.GetFromJsonAsync<Recommendation[]>("/Recommendation/index.json")!;
+            var recommendations = await _httpClient.GetFromJsonAsync<Recommendation[]>("/Recommendations/index.json")!;
+            var random = new Random();
+            var shuffledList = recommendations!.OrderBy(x => random.Next()).ToList();
 
             _recommendations.Clear();
             if(recommendations is not null ) 
-                _recommendations.AddRange(recommendations);
+                _recommendations.AddRange(shuffledList);
         }
         catch (Exception ex)
         {

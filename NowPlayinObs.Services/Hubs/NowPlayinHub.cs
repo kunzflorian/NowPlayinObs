@@ -4,13 +4,11 @@ using NowPlayinObs.Services;
 
 namespace NowPlayinObs.Hubs;
 
-public class NowPlayinHub : Hub
+public class NowPlayinHub(
+    NowPlayinService nowPlayinService
+) : Hub
 {
-    public NowPlayinHub(NowPlayinService nowPlayinService)
-    {
-        _nowPlayinService = nowPlayinService;
-    }
-    private readonly NowPlayinService _nowPlayinService;
+    private readonly NowPlayinService _nowPlayinService = nowPlayinService;
 
     public async Task SetNowPlayin(TrackInfo trackInfo)
     {

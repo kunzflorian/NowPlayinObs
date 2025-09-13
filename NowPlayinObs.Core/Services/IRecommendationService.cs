@@ -5,5 +5,5 @@ namespace NowPlayinObs.Services;
 public interface IRecommendationService
 {
     //public Task InitializeAsync();
-    public Task<IEnumerable<Recommendation>> GetRecommendations();
+    public Task<IEnumerable<Recommendation>> GetRecommendationsAsync();
 }

@@ -27,6 +27,7 @@ public static class NowPlayinExtension
         services.AddHostedService<NowPlayinWorker>();
 
         services.AddSingleton<IRecommendationService, RecommendationService>();
+        services.AddHostedService<RecommendationWorker>();
 
         services.AddHttpClient();   
         services.ConfigureHttpClientDefaults(o => {
@@ -41,6 +42,7 @@ public static class NowPlayinExtension
     {
         app.UseResponseCompression();        
         app.MapHub<NowPlayinHub>(NowPlayinHubDefaults.NOWPLAYIN_HUB);
+        app.MapHub<RecommendationHub>(NowPlayinHubDefaults.RECOMMENDATION_HUB);
         return app;
     }
 }

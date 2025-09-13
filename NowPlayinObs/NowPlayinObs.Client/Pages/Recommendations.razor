@@ -1,6 +1,14 @@
 ﻿@page "/recommendations"
 @using System.Timers
+@using Microsoft.AspNetCore.SignalR.Client
+@using NowPlayinObs.Domain
+@using NowPlayinObs.Hubs
+@using NowPlayinObs.Services
 @rendermode InteractiveWebAssembly
+@* @rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false)) *@
+@inject IRecommendationService RecommendationService
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -15,41 +23,76 @@
 <!-- Add sortable.js reference if SortableList component is used in your application. -->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script src="_content/Blazor.Bootstrap/blazor.bootstrap.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<div class="recommendation-headline"/>
+<script>
+    var carousel = {
+        "getSelectedIndex" : function(id){
+            let index = $('#' + id + ' .carousel-inner .active').index();
+            return index;
+        }
+    };
+</script>
+
+
+<div class="recommendation-headline" />
 <Carousel @ref="_carousel" ShowPreviousNextControls="false" Interval="3000">
-    <CarouselItem Class="recommendation-item">
-        <div class="recommendation-artist">wuffnuffs</div>
-        <div Class="recommendation-image">
-            <Image Src="/Recommendations/wuffnuffs.png" />
-        </div>
-
-    </CarouselItem>
-    <CarouselItem Active="true">
-        <div class="recommendation-artist">juicedrumandbass</div>
-        <div Class="recommendation-image">
-            <Image Src="/Recommendations/juicedrumandbass.png" />
-        </div>
-    </CarouselItem>
+    @foreach (var recommendation in _recommendations)
+    {
+        <CarouselItem Class="recommendation-item" Active=@(recommendation.IsFirst)>
+            <div class="recommendation-artist">@recommendation.Name</div>
+            <div Class="recommendation-image">
+                <Image Src="@(recommendation.ImageFile)" />
+            </div>
+        </CarouselItem>
+    }
 </Carousel>
 
 @code {
     Carousel _carousel = default!;
-    Timer _timer = default!;
+    IEnumerable<Recommendation> _recommendations = [];
+    HubConnection? _hubConnection;
 
     protected override async Task OnInitializedAsync()
     {
+        if (RendererInfo.IsInteractive)
+        {
+            _hubConnection = new HubConnectionBuilder()
+                .WithUrl(Navigation.ToAbsoluteUri(NowPlayinHubDefaults.RECOMMENDATION_HUB))
+                .Build();
+            _hubConnection.On<int>("ReceiveShowItemByIndex", OnReceiveShowItemByIndex);
+            await _hubConnection.StartAsync();
+
+            _recommendations = await RecommendationService.GetRecommendationsAsync();
+            // if none is selected, the control breaks.
+            // the hub will send the correct
+            _recommendations.Last().IsFirst = true;
+        }
+
         await base.OnInitializedAsync();
-
-        _timer = new Timer(30000);
-        _timer.Elapsed += OnTimerElapsed;
-        _timer.Enabled = true;
-
     }
 
-    private void OnTimerElapsed(object? sender, ElapsedEventArgs e)
+    private async void OnReceiveShowItemByIndex(int index)
     {
-        _carousel.ShowPreviousItemAsync();
+        var currentIndex = await GetSelectedIndexAsync();
 
+        if(currentIndex > 0)
+        {
+            if (currentIndex - index == 1)
+                await _carousel.ShowPreviousItemAsync();
+            else
+                await _carousel.ShowItemByIndexAsync(index);
+        }
+        else if(currentIndex == 0)
+        {
+            if(index == _recommendations.Count()-1)
+                await _carousel.ShowPreviousItemAsync();
+            else
+                await _carousel.ShowItemByIndexAsync(index);
+        }
     }
+
+    private async Task<int> GetSelectedIndexAsync()
+       => await JSRuntime.InvokeAsync<int>("carousel.getSelectedIndex", _carousel.Id);
+
 }

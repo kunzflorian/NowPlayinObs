@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowPlayinObs.Core", "NowPla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowPlayinObs.Services", "NowPlayinObs.Services\NowPlayinObs.Services.csproj", "{4B2E77D3-A129-476C-B622-BE25AC162463}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NowPlayinObs.Test", "NowPlayinObs.Test\NowPlayinObs.Test.csproj", "{008DA0E8-5C00-70EA-2399-2F0A3854F933}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4B2E77D3-A129-476C-B622-BE25AC162463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B2E77D3-A129-476C-B622-BE25AC162463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B2E77D3-A129-476C-B622-BE25AC162463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{008DA0E8-5C00-70EA-2399-2F0A3854F933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{008DA0E8-5C00-70EA-2399-2F0A3854F933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{008DA0E8-5C00-70EA-2399-2F0A3854F933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{008DA0E8-5C00-70EA-2399-2F0A3854F933}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

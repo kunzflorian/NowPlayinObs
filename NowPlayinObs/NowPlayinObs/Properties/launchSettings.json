@@ -3,7 +3,7 @@
     "http": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:9001/recommendations",
+      "launchUrl": "http://localhost:9001/signin-twitch",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

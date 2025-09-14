@@ -1,0 +1,89 @@
+﻿@page "/signin-twitch"
+@using System.Web
+@using BlazorBootstrap
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+@inject TwitchConfig TwitchConfig
+
+@if (string.IsNullOrEmpty(_headline))
+{
+    <Button @onclick="LoginWithTwitch">Login as ChatBot</Button>
+}
+<h3>@_headline</h3>
+
+@code {
+    string _headline = string.Empty;
+
+    protected override Task OnInitializedAsync()
+    {
+        var code = ExtractCodeFromUrl();
+
+        if (!string.IsNullOrEmpty(code))
+        {
+            _headline = $"code is: {code}";
+        }
+
+        return base.OnInitializedAsync();
+    }
+
+    private void LoginWithTwitch()
+    {
+        // Redirect user to Twitch OAuth
+        var clientId = "prw8bksfle5gpuix2hoppscrudrsaz";
+        clientId = TwitchConfig.ClientId;
+
+        var redirectUri = $"{NavigationManager.BaseUri}signin-twitch";
+        var scopes = "user:bot user:write:chat";
+
+        var url = $"https://id.twitch.tv/oauth2/authorize?client_id={clientId}" +
+                  $"&redirect_uri={Uri.EscapeDataString(redirectUri)}" +
+                  $"&response_type=code&scope={Uri.EscapeDataString(scopes)}" +
+                  "&code_challenge=BASE64URL_ENCODED_SHA256" +
+                  "&code_challenge_method=S256";
+
+        NavigationManager.NavigateTo(url, true); // force full browser redirect
+    }
+
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        /*
+        if (firstRender)
+        {
+            var code = ExtractCodeFromUrl();
+            if (!string.IsNullOrEmpty(code))
+            {
+                // Example: store it in backend or in-memory for demo
+                Console.WriteLine($"Bot access token: {code}");
+            }
+        }
+        */
+    }
+
+    private string ExtractCodeFromUrl()
+    {
+        // Get the URL fragment
+        var uri = new Uri(NavigationManager.Uri);
+
+        var fragment = uri.Query;
+
+        if (string.IsNullOrEmpty(fragment))
+            return string.Empty;
+
+        var paramsCollection = HttpUtility.ParseQueryString(fragment);
+
+        foreach (var key in paramsCollection.AllKeys)
+        {
+            var pair = $"[{key}]-> {paramsCollection[key]}";
+            Console.WriteLine(pair);
+        }
+
+        if (paramsCollection.AllKeys.Contains("code"))
+            return paramsCollection["code"]!;
+        else
+            return string.Empty;
+
+        //var query = fragment.Substring(1); // remove #
+    }
+}

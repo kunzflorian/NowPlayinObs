@@ -23,14 +23,19 @@ public static class NowPlayinExtension
         else
             throw new Exception("config not found");
 
+
+        services.AddTwitch(configuration);
+
         services.AddSingleton<NowPlayinService>();
         services.AddHostedService<NowPlayinWorker>();
 
         services.AddSingleton<IRecommendationService, RecommendationService>();
         services.AddHostedService<RecommendationWorker>();
 
-        services.AddHttpClient();   
-        services.ConfigureHttpClientDefaults(o => {
+        // default client for hub
+        services.AddHttpClient();
+        services.ConfigureHttpClientDefaults(o =>
+        {
             o.ConfigureHttpClient(c =>
                 c.BaseAddress = new Uri(configuration.GetSection("Kestrel:Endpoints:Default:Url").Get<string>()!));
         });
@@ -38,9 +43,47 @@ public static class NowPlayinExtension
         return services;
     }
 
+    private static IServiceCollection AddTwitch(this IServiceCollection services, IConfiguration configuration)
+    {
+        var configTwitch = configuration.GetSection("Twitch").Get<TwitchConfig>();
+        if (configTwitch is not null)
+        {
+            services.AddSingleton(configTwitch);
+
+            services.AddHttpClient(
+                TwitchConfig.HttpClientAuth,
+                client =>
+                {
+                    client.BaseAddress = new Uri(configTwitch!.BaseAuthUrl);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    // Add a user-agent default request header.
+                    client.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");
+                }
+            ).AddAsKeyed();
+            services.AddHttpClient(
+                TwitchConfig.HttpClientService,
+                client =>
+                {
+                    client.BaseAddress = new Uri(configTwitch.BaseApiUrl!);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("client-id", configTwitch.ClientId);
+                    // Add a user-agent default request header.
+                    client.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");
+                }
+            ).AddAsKeyed();
+
+            services.AddScoped<AuthentificiationService>();
+        }
+        else
+            throw new Exception("configTwitch not found");
+
+        return services;
+    }
+
     public static WebApplication UseNowPlayin(this WebApplication app)
     {
-        app.UseResponseCompression();        
+        app.UseResponseCompression();
         app.MapHub<NowPlayinHub>(NowPlayinHubDefaults.NOWPLAYIN_HUB);
         app.MapHub<RecommendationHub>(NowPlayinHubDefaults.RECOMMENDATION_HUB);
         return app;

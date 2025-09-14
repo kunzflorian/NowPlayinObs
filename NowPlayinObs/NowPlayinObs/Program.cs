@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Configuration;
 using NowPlayinObs.Components;
 using NowPlayinObs.Services;
@@ -11,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddNowPlayin(config);
@@ -35,6 +37,7 @@ app.UseAntiforgery();
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(NowPlayinObs.Client._Imports).Assembly);
 

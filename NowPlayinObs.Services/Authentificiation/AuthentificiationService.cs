@@ -28,7 +28,8 @@ public class AuthentificiationService(
     private readonly IConfiguration _configuration = configuration;
     private readonly HttpClient _client = client;
     private readonly TwitchConfig _twitchConfig = twitchConfig;
-    private readonly string _path = "oauth2/token";
+    private readonly string _pathToken = "oauth2/token";
+    private readonly string _pathDevice = "oauth2/device";
 
     public async Task<ClientCredentialsToken> GetClientCredentialsTokenAsync()
     {
@@ -39,7 +40,7 @@ public class AuthentificiationService(
         };
 
         var json = JsonSerializer.Serialize(request);
-        var uri = $"{_client.BaseAddress}{_path}";
+        var uri = $"{_client.BaseAddress}{_pathToken}";
         var jsonString = new StringContent(json, Encoding.UTF8, MediaTypeHeaderValue.Parse("application/json"));
 
         var response = await _client.PostAsync(uri, jsonString);
@@ -70,7 +71,7 @@ public class AuthentificiationService(
         };
 
         var json = JsonSerializer.Serialize(request);
-        var uri = $"{_client.BaseAddress}{_path}";
+        var uri = $"{_client.BaseAddress}{_pathToken}";
         var jsonString = new StringContent(json, Encoding.UTF8, MediaTypeHeaderValue.Parse("application/json"));
 
         var response = await _client.PostAsync(uri, jsonString);
@@ -84,6 +85,32 @@ public class AuthentificiationService(
         {
             string tmp = await response.Content.ReadAsStringAsync();
             throw new Exception($"Auth failed {tmp}");
+        }
+    }
+
+    public async Task<DeviceCode> GetDeviceCodeAsync(string scope)
+    {
+        var request = new DeviceCodeRequest()
+        {
+            ClientId = _twitchConfig.ClientId!,
+            Scope = scope
+        };
+
+        var json = JsonSerializer.Serialize(request);
+        var uri = $"{_client.BaseAddress}{_pathDevice}?client_id={request.ClientId}";
+        var jsonString = new StringContent(json, Encoding.UTF8, MediaTypeHeaderValue.Parse("application/json"));
+
+        var response = await _client.PostAsync(uri, jsonString);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var deviceCode = await response.Content.ReadFromJsonAsync<DeviceCode>();
+            return deviceCode!;
+        }
+        else
+        {
+            var status = await response.Content.ReadFromJsonAsync<StatusResponse>();
+            throw new Exception($"Auth failed {status}");
         }
     }
 }

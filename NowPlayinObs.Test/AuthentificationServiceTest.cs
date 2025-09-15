@@ -14,8 +14,6 @@ public sealed class AuthentificationServiceTest : TestBase
         var serviceProvider = Services.BuildServiceProvider();
 
         var authentificiationService = serviceProvider.GetRequiredService<AuthentificiationService>();
-        var twitchConfig = serviceProvider.GetRequiredService<TwitchConfig>();
-       
 
         var token = await authentificiationService.GetClientCredentialsTokenAsync();
 
@@ -28,10 +26,21 @@ public sealed class AuthentificationServiceTest : TestBase
         var serviceProvider = Services.BuildServiceProvider();
 
         var authentificiationService = serviceProvider.GetRequiredService<AuthentificiationService>();
-        var twitchConfig = serviceProvider.GetRequiredService<TwitchConfig>();
 
         var token = await authentificiationService.GetAuthCodeTokenAsync(code: "tsjaxovza3mzkuclgbryw9vgiqn2gu", scope: "user:write:chat user:bot");
 
         Assert.IsNotNull(token);
+    }
+
+    [TestMethod]
+    public async Task GetDeviceCodeAsync()
+    {
+        var serviceProvider = Services.BuildServiceProvider();
+
+        var authentificiationService = serviceProvider.GetRequiredService<AuthentificiationService>();
+
+        var deviceCode = await authentificiationService.GetDeviceCodeAsync(scope: "user:write:chat user:bot");
+
+        Assert.IsNotNull(deviceCode);
     }
 }

@@ -44,8 +44,16 @@ public class AuthentificiationService(
 
         var response = await _client.PostAsync(uri, jsonString);
 
-        var token = await response.Content.ReadFromJsonAsync<ClientCredentialsToken>();
-        return token!;
+        if (response.IsSuccessStatusCode)
+        {   
+            var token = await response.Content.ReadFromJsonAsync<ClientCredentialsToken>();
+            return token!;
+        }
+        else
+        {
+            string tmp = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Auth failed {tmp}");
+        }
     }
 
     public async Task<AuthCodeToken> GetAuthCodeTokenAsync(string code, string scope)

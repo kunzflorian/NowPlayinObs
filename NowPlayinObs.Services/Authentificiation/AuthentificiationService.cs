@@ -90,15 +90,8 @@ public class AuthentificiationService(
 
     public async Task<DeviceCode> GetDeviceCodeAsync(string scope)
     {
-        var request = new DeviceCodeRequest()
-        {
-            ClientId = _twitchConfig.ClientId!,
-            Scope = scope
-        };
-
-        var json = JsonSerializer.Serialize(request);
-        var uri = $"{_client.BaseAddress}{_pathDevice}?client_id={request.ClientId}";
-        var jsonString = new StringContent(json, Encoding.UTF8, MediaTypeHeaderValue.Parse("application/json"));
+        var uri = $"{_client.BaseAddress}{_pathDevice}?client_id={_twitchConfig.ClientId}&scopes={Uri.EscapeDataString(scope)}";
+        var jsonString = new StringContent("{}", Encoding.UTF8, MediaTypeHeaderValue.Parse("application/json"));
 
         var response = await _client.PostAsync(uri, jsonString);
 

@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using NowPlayinObs.Authentificiation;
 using NowPlayinObs.Services;
 
 namespace NowPlayinObs.Test;
@@ -10,7 +8,7 @@ public sealed class AuthentificationServiceTest : TestBase
 {
     [TestMethod]
     public async Task GetClientCredentialsTokenAsync()
-    {   
+    {
         var serviceProvider = Services.BuildServiceProvider();
 
         var authentificiationService = serviceProvider.GetRequiredService<AuthentificiationService>();

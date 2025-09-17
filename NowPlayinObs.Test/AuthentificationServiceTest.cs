@@ -11,7 +11,7 @@ public sealed class AuthentificationServiceTest : TestBase
     {
         var serviceProvider = Services.BuildServiceProvider();
 
-        var authentificiationService = serviceProvider.GetRequiredService<AuthentificiationService>();
+        var authentificiationService = serviceProvider.GetRequiredService<AuthentificationService>();
 
         var token = await authentificiationService.GetClientCredentialsTokenAsync();
 
@@ -23,7 +23,7 @@ public sealed class AuthentificationServiceTest : TestBase
     {
         var serviceProvider = Services.BuildServiceProvider();
 
-        var authentificiationService = serviceProvider.GetRequiredService<AuthentificiationService>();
+        var authentificiationService = serviceProvider.GetRequiredService<AuthentificationService>();
 
         var token = await authentificiationService.GetAuthCodeTokenAsync(code: "tsjaxovza3mzkuclgbryw9vgiqn2gu", scope: "user:write:chat user:bot");
 
@@ -35,7 +35,7 @@ public sealed class AuthentificationServiceTest : TestBase
     {
         var serviceProvider = Services.BuildServiceProvider();
 
-        var authentificiationService = serviceProvider.GetRequiredService<AuthentificiationService>();
+        var authentificiationService = serviceProvider.GetRequiredService<AuthentificationService>();
 
         var deviceCode = await authentificiationService.GetDeviceCodeAsync(scope: "user:write:chat user:bot");
 

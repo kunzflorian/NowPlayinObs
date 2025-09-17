@@ -73,7 +73,7 @@ public static class NowPlayinExtension
                 }
             ).AddAsKeyed();
 
-            services.AddScoped<AuthentificiationService>();
+            services.AddScoped<AuthentificationService>();
         }
         else
             throw new Exception("configTwitch not found");

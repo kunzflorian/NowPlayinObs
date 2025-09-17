@@ -16,15 +16,15 @@ using System.Threading.Tasks;
 
 namespace NowPlayinObs.Services;
 
-public class AuthentificiationService(
-    ILogger<AuthentificiationService> logger,
+public class AuthentificationService(
+    ILogger<AuthentificationService> logger,
     IConfiguration configuration,
     [FromKeyedServices(TwitchConfig.HttpClientAuth)]
     HttpClient client,
     TwitchConfig twitchConfig
 )
 {
-    private readonly ILogger<AuthentificiationService> _logger = logger;
+    private readonly ILogger<AuthentificationService> _logger = logger;
     private readonly IConfiguration _configuration = configuration;
     private readonly HttpClient _client = client;
     private readonly TwitchConfig _twitchConfig = twitchConfig;

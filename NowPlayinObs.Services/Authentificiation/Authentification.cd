@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NowPlayinObs.Authentificiation.AuthCodeRequest">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="NowPlayinObs.Authentificiation.AuthRequestBase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.75" Y="4.238" />
+        <Point X="1.75" Y="4.625" />
+        <Point X="5.25" Y="4.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAgAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authentificiation\AuthCodeRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NowPlayinObs.Authentificiation.AuthRequestBase">
+    <Position X="1" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAQAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authentificiation\AuthRequestBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NowPlayinObs.Authentificiation.ClientCredentialsRequest">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="NowPlayinObs.Authentificiation.AuthRequestBase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.812" Y="2.75" />
+        <Point X="1.812" Y="2.062" />
+        <Point X="5.25" Y="2.062" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authentificiation\ClientCredentialsRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NowPlayinObs.Authentificiation.StatusResponse">
+    <Position X="9" Y="7.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Authentificiation\StatusResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NowPlayinObs.Services.AuthentificiationService">
+    <Position X="9" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABEAAAAAEQgAAAAAAAAJAAAAAAAAAEABAAAAAA=</HashCode>
+      <FileName>Authentificiation\AuthentificiationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NowPlayinObs.Authentification.AuthCodeToken">
+    <Position X="14.25" Y="3.75" Width="2" />
+    <InheritanceLine Type="NowPlayinObs.Authentification.BaseToken" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="20.25" Y="6.295" />
+        <Point X="15.125" Y="6.295" />
+        <Point X="15.125" Y="5.627" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NowPlayinObs.Authentification.BaseToken">
+    <Position X="20.25" Y="5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NowPlayinObs.Authentification.ClientCredentialsToken">
+    <Position X="14.25" Y="1.75" Width="2" />
+    <InheritanceLine Type="NowPlayinObs.Authentification.BaseToken" FixedToPoint="true">
+      <Path>
+        <Point X="21" Y="5" />
+        <Point X="21" Y="2.438" />
+        <Point X="16.25" Y="2.438" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NowPlayinObs.Authentificiation.DeviceCode">
+    <Position X="14.25" Y="8.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

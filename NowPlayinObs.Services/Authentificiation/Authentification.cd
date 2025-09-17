@@ -42,20 +42,20 @@
       <FileName>Authentificiation\StatusResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NowPlayinObs.Services.AuthentificiationService">
+  <Class Name="NowPlayinObs.Services.AuthentificationService">
     <Position X="9" Y="4.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABEAAAAAEQgAAAAAAAAJAAAAAAAAAEABAAAAAA=</HashCode>
-      <FileName>Authentificiation\AuthentificiationService.cs</FileName>
+      <FileName>Authentificiation\AuthentificationService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NowPlayinObs.Authentification.AuthCodeToken">
     <Position X="14.25" Y="3.75" Width="2" />
-    <InheritanceLine Type="NowPlayinObs.Authentification.BaseToken" FixedFromPoint="true" FixedToPoint="true">
+    <InheritanceLine Type="NowPlayinObs.Authentification.UpdateableToken" FixedToPoint="true">
       <Path>
-        <Point X="20.25" Y="6.295" />
-        <Point X="15.125" Y="6.295" />
-        <Point X="15.125" Y="5.627" />
+        <Point X="18.625" Y="5.25" />
+        <Point X="18.625" Y="4.25" />
+        <Point X="16.25" Y="4.25" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier />
@@ -79,7 +79,22 @@
     <TypeIdentifier />
   </Class>
   <Class Name="NowPlayinObs.Authentificiation.DeviceCode">
-    <Position X="14.25" Y="8.25" Width="2" />
+    <Position X="14.25" Y="9.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NowPlayinObs.Authentification.MachineCodeToken">
+    <Position X="14.25" Y="7" Width="2" />
+    <InheritanceLine Type="NowPlayinObs.Authentification.UpdateableToken" FixedToPoint="true">
+      <Path>
+        <Point X="18.625" Y="7.127" />
+        <Point X="18.625" Y="7.688" />
+        <Point X="16.25" Y="7.688" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="NowPlayinObs.Authentification.UpdateableToken">
+    <Position X="17.75" Y="5.25" Width="1.75" />
     <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />

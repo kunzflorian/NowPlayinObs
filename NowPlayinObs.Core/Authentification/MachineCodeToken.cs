@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace NowPlayinObs.Authentification;
 
-namespace NowPlayinObs.Authentification;
-
-public class MachineCodeToken
+public class MachineCodeToken : UpdateableToken
 {
 }

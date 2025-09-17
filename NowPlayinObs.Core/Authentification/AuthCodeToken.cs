@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace NowPlayinObs.Authentification;
 
-public class AuthCodeToken : BaseToken
+public class AuthCodeToken : UpdateableToken
 {
-    [JsonPropertyName("refresh_token")]
-    public required string RefreshToken { get; set; }
-    [JsonPropertyName("scope")]
-    public required string[] Scope { get; set; }
+   
 }

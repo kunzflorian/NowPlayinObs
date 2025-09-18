@@ -3,7 +3,7 @@
     "http": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:9001/signin-twitch",
+      "launchUrl": "http://localhost:9001/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -13,8 +13,8 @@
     },
     "DebugDeploy": {
       "commandName": "Executable",
-      "executablePath": "C:\\Users\\kunzf\\OneDrive\\Desktop\\obs\\NowPlayin\\NowPlayinObs.exe",
-      "workingDirectory": "C:\\prj\\NowPlayinObs\\NowPlayinObs\\NowPlayinObs\\publish"
+      "executablePath": "C:\\Users\\kunzf\\OneDrive\\Desktop\\obs\\NowPlaying\\NowPlayinObs.exe",
+      "workingDirectory": "C:\\Users\\kunzf\\OneDrive\\Desktop\\obs\\NowPlaying"
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json"

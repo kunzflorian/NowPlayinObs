@@ -7,14 +7,37 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Recommendations\index.json" />
+    <Content Remove="wwwroot\Templates\Default\NowPlayin.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Recommendations\index.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Templates\Default\NowPlayin.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\NowPlayinObs.Services\NowPlayinObs.Services.csproj" />
     <ProjectReference Include="..\NowPlayinObs.Client\NowPlayinObs.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\Templates\Default\NowPlayin.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

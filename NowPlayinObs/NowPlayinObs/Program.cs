@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.FileProviders;
 using NowPlayinObs.Components;
 using NowPlayinObs.Services;
 
@@ -36,6 +37,24 @@ else
 app.UseAntiforgery();
 
 app.MapStaticAssets();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Recommendations")),
+    RequestPath = "/Recommendations",
+    ServeUnknownFileTypes = true
+});
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Templates", "Default")),
+    RequestPath = "/Templates/Default",
+    ServeUnknownFileTypes = true
+});
+
+
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()

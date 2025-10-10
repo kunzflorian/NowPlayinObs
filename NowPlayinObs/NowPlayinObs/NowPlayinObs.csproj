@@ -8,11 +8,15 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\Recommendations\index.json" />
+    <Content Remove="wwwroot\Recommendations\style.css" />
     <Content Remove="wwwroot\Templates\Default\NowPlayin.html" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\Recommendations\index.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Recommendations\style.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="wwwroot\Templates\Default\NowPlayin.html">

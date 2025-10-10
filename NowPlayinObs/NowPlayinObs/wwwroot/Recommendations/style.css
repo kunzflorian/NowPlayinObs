@@ -1,5 +1,5 @@
-﻿body{
-    background-color:transparent;
+﻿body {
+    background-color: transparent;
 }
 
 .recommendation-headline:before {
@@ -29,14 +29,19 @@
     position: static;
     inset: 0% auto auto 0%;
     margin: 0px;
-    padding-bottom:35px;
+    padding-bottom: 35px;
 }
 
 .recommendation-item {
     border: 0px solid transparent;
 }
 
-.recommendation-image {    
-    max-height: 430px;
-    max-width: 430px;    
+.recommendation-image {
+    max-width: 430px;
+    
+}
+
+.recommendation-image-fluid {
+    max-height: 210px;
+    margin: 0px 5px;
 }

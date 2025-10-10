@@ -42,7 +42,7 @@
         <CarouselItem Class="recommendation-item" Active=@(recommendation.IsFirst)>
             <div class="recommendation-artist">@recommendation.Name</div>
             <div Class="recommendation-image">
-                <Image Src="@(recommendation.ImageFile)" />
+                <Image Src="@(recommendation.ImageFile)" Class="recommendation-image-fluid" />
             </div>
         </CarouselItem>
     }

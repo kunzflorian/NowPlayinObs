@@ -24,7 +24,7 @@ public static class NowPlayinExtension
             throw new Exception("config not found");
 
 
-        services.AddTwitch(configuration);
+        //services.AddTwitch(configuration);
 
         services.AddSingleton<NowPlayinService>();
         services.AddHostedService<NowPlayinWorker>();

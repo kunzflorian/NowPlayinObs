@@ -5,6 +5,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NowPlayinObs.Domain;
 using NowPlayinObs.Hubs;
+using System;
+using System.Text.Json.Nodes;
 using System.Web;
 
 namespace NowPlayinObs.Services;
@@ -13,14 +15,15 @@ public class NowPlayinWorker(
     ILogger<NowPlayinWorker> logger,
     IConfiguration configuration,
     NowPlayinService nowPlayinService,
-    NowPlayinConfig nowPlayinConfig
+    NowPlayinConfig nowPlayinConfig,
+    HttpClient httpClient
     ) : BackgroundService
 {
     private readonly ILogger<NowPlayinWorker> _logger = logger;
     private readonly IConfiguration _configuration = configuration;
     private readonly NowPlayinService _nowPlayinService = nowPlayinService;
     private readonly NowPlayinConfig _nowPlayinConfig = nowPlayinConfig;
-
+    private readonly HttpClient _httpClient = httpClient;
     private HubConnection? _hubConnection;
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -40,7 +43,12 @@ public class NowPlayinWorker(
             try
             {
                 var currentTrack = await _nowPlayinService.GetCurrentTrack();
-                var nowPlayinTrack = await GetSeratoInfo();
+                var nowPlayinTrack = _nowPlayinConfig.Source switch
+                {
+                    NowPlayinSource.SeratoLive => await GetSeratoInfo(),
+                    NowPlayinSource.NowPlayingApp => await GetNowPlayingAppInfo(),
+                    _ => null
+                };
 
                 if (!currentTrack.Equals(nowPlayinTrack))
                     await _hubConnection.SendAsync("SetNowPlayin", nowPlayinTrack);
@@ -55,6 +63,32 @@ public class NowPlayinWorker(
         }
 
         await _hubConnection.StopAsync();
+    }
+
+    private async Task<TrackInfo> GetNowPlayingAppInfo()
+    {
+        var response = await httpClient.GetAsync(_nowPlayinConfig.PlaylistUrl);
+
+        if (!response.IsSuccessStatusCode)
+            throw new Exception($"{response.StatusCode}: {response.ReasonPhrase}");
+
+        var json = await response.Content.ReadAsStringAsync();
+
+        var root = JsonNode.Parse(json)!;
+        var currentTrack = root["currentTrack"];       
+
+        var title = (string)currentTrack!["title"]!;
+        var artist = (string)currentTrack["artist"]!;
+        //var label = (string)currentTrack["label"]!;
+
+        var trackInfo = new TrackInfo()
+        {
+            Status = "",
+            Title = title,
+            Artist = artist,
+        };
+
+        return trackInfo;
     }
 
     private async Task<TrackInfo> GetSeratoInfo()

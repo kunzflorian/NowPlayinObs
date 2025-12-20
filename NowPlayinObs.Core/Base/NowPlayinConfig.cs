@@ -7,4 +7,6 @@ public class NowPlayinConfig
     public TimeSpan PollIntervall { get; set; } = new TimeSpan(0, 0, 15);
 
     public TimeSpan RecommendationsIntervall { get; set; } = new TimeSpan(0, 0, 10);
+
+    public NowPlayinSource Source { get; set; } = NowPlayinSource.None;
 }

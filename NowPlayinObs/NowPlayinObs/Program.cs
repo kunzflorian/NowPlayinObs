@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 using NowPlayinObs.Components;
 using NowPlayinObs.Services;
@@ -16,7 +14,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddNowPlayin(config);
+builder.Services.AddNowPlayin(config)
+                .AddTwitch(config);
 
 var app = builder.Build();
 

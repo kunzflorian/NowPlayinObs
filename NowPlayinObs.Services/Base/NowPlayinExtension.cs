@@ -43,7 +43,7 @@ public static class NowPlayinExtension
         return services;
     }
 
-    private static IServiceCollection AddTwitch(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddTwitch(this IServiceCollection services, IConfiguration configuration)
     {
         var configTwitch = configuration.GetSection("Twitch").Get<TwitchConfig>();
         if (configTwitch is not null)

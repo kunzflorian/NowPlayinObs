@@ -3,7 +3,7 @@
     "http": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "http://localhost:9001/",
+      "launchUrl": "http://localhost:9001/Lineup",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

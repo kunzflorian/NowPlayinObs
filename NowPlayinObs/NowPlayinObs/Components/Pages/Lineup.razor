@@ -1,0 +1,79 @@
+﻿@page "/lineup"
+@using NowPlayinObs.Services
+@using NowPlayinObs.Domain;
+@rendermode InteractiveServer
+@inject ILineupService ILinupService
+@code {
+    IEnumerable<Slot> _slots = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        _slots = await ILinupService.GetSlotsAsync();
+    }
+}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="../app.css" />
+    <style>
+        .scroll-container {
+        overflow: clip;
+        white-space: nowrap;
+        }
+
+        .scroll-content {
+        display: inline-block;
+        animation: ticker 210s linear infinite;
+        }
+
+        @@keyframes ticker {
+        from {
+        transform: translateX(0);
+        }
+
+        to {
+        transform: translateX(-100%);
+        }
+        }
+
+        .date {
+        font-family: Arial;
+        font-size: 20px;
+        font-weight: 600;
+        color: #FFFFFF;
+        background-color: #ff007b;
+        display: inline-block;
+        width: auto;
+        padding: 2px 6px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        }
+
+        .artist {
+        font-family: Arial;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 44px;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        letter-spacing: normal;
+        }
+    </style>
+</head>
+
+<div class="scroll-container">
+    <div class="scroll-content">
+        <div class="scroll-inner">
+            <div style="display: flex;gap:120px;">
+                @foreach (var slot in _slots)
+                {
+                    <div>
+                        <div class="date">@slot.Start</div>
+                        <div class="artist">@slot.Streamer</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+

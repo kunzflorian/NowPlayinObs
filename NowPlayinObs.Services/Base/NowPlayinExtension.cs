@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NowPlayinObs.Hubs;
+using NowPlayinObs.Recommendation;
 
 namespace NowPlayinObs.Services;
 
@@ -31,6 +32,8 @@ public static class NowPlayinExtension
 
         services.AddSingleton<IRecommendationService, RecommendationService>();
         services.AddHostedService<RecommendationWorker>();
+
+        services.AddSingleton<ILineupService, LineupService>();
 
         // default client for hub
         services.AddHttpClient();

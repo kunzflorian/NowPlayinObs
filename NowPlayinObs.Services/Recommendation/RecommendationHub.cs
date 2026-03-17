@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SignalR.Client;
-using NowPlayinObs.Domain;
 using NowPlayinObs.Services;
 
-namespace NowPlayinObs.Hubs;
+namespace NowPlayinObs.Recommendation;
+using Recommendation = NowPlayinObs.Domain.Recommendation;
 
 public class RecommendationHub(
     IRecommendationService recommendationService

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Http.Json;
 
 namespace NowPlayinObs.Services;
+using Recommendation = NowPlayinObs.Domain.Recommendation;
 
 public class RecommendationService(
     ILogger<RecommendationService> logger,

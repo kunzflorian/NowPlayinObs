@@ -2,11 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using NowPlayinObs.Domain;
 using NowPlayinObs.Hubs;
 
 namespace NowPlayinObs.Services;
-
+using Recommendation = NowPlayinObs.Domain.Recommendation;
 public class RecommendationWorker(
     ILogger<RecommendationWorker> logger,
     IConfiguration configuration,

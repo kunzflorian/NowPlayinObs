@@ -1,8 +1,10 @@
-﻿namespace NowPlayinObs.Domain;
+﻿using NowPlayinObs.Hubs;
+
+namespace NowPlayinObs.Domain;
 
 public class TrackInfo : IEquatable<TrackInfo>
 {
-    public string Status { get; set; } = "not live";
+    public string Status { get; set; } = NowPlayinHubDefaults.NO_DATA;
     public string Title { get; set; } = string.Empty;
     public string Artist { get; set; } = string.Empty;
 

@@ -83,7 +83,7 @@ public class NowPlayinWorker(
 
         var trackInfo = new TrackInfo()
         {
-            Status = "",
+            Status = NowPlayinHubDefaults.TITLE,
             Title = title,
             Artist = artist,
         };
@@ -110,7 +110,7 @@ public class NowPlayinWorker(
 
                 if(items.Length == 2)
                 {
-                    trackInfo.Status = "now playin";
+                    trackInfo.Status = NowPlayinHubDefaults.TITLE;
                     trackInfo.Artist = items[0].Trim();
                     trackInfo.Title = items[1].Trim();
                 }

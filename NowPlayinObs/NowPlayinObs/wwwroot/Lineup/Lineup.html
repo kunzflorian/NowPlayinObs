@@ -1,0 +1,148 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<link href="../app.css" />
+
+<div class="scroll-container">
+    <div class="scroll-content">
+
+        <div class="scroll-inner">
+            <div style="display: flex;gap:120px;">
+                <div>
+                    <div class="date">2026/02/20 - 13:00 GMT</div>
+                    <div class="artist">DJDEBSTA</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 14:00 GMT</div>
+                    <div class="artist">DJLYNO</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 15:00 GMT</div>
+                    <div class="artist">MARIATURME</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 16:00 GMT</div>
+                    <div class="artist">FLOW_DEE</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 17:00 GMT</div>
+                    <div class="artist">THANNATAR</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 18:00 GMT</div>
+                    <div class="artist">GOMBASHLEY</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 19:00 GMT</div>
+                    <div class="artist">NICKEEDEEDJ</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 20:00 GMT</div>
+                    <div class="artist">POPWINN</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 21:00 GMT</div>
+                    <div class="artist">DJ_VAMPYRE</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 22:00 GMT</div>
+                    <div class="artist">DJSMDNB</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/20 - 23:00 GMT</div>
+                    <div class="artist">CRYOGENIX_00</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/21 - 00:00 GMT</div>
+                    <div class="artist">KWRK</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/21 - 01:00 GMT</div>
+                    <div class="artist">PLETHOTECHNO</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/21 - 02:00 GMT</div>
+                    <div class="artist">FOODFARMER</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/21 - 03:00 GMT</div>
+                    <div class="artist">SKOOBAH_</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/21 - 04:00 GMT</div>
+                    <div class="artist">DJ_MR_E</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/21 - 05:00 GMT</div>
+                    <div class="artist">JAY_GATZ</div>
+                </div>
+                <div>
+                    <div class="date">2026/02/21 - 06:00 GMT</div>
+                    <div class="artist">WUFFNUFFS</div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .scroll-container {
+            overflow: clip;
+            white-space: nowrap;
+        }
+
+        .scroll-content {
+            display: inline-block;
+            animation: ticker 210s linear infinite;
+        }
+
+        @keyframes ticker {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .date {
+            font-family: Arial;
+            font-size: 20px;
+            font-weight: 600;
+            color: #FFFFFF;
+            background-color: #ff007b;
+            display: inline-block;
+            width: auto;
+            padding: 2px 6px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .artist {
+            font-family: Arial;
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 44px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: normal;
+        }
+    </style>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // speed is pixel/s
+        let speed = 10; 
+        let width = $('.scroll-inner').width(); 
+        let duration = parseInt(width / speed);
+        let animation = 'ticker ' + duration + 's linear infinite';
+
+        $('.scroll-content').css('animation', animation);
+        
+    });
+</script>

@@ -26,4 +26,10 @@ var json = await response.Content.ReadAsStringAsync();
 var root = JsonNode.Parse(json)!;
 var currentTrack = root["currentTrack"];
 
-var title = currentTrack[""];
+var title = (string) currentTrack["title"];
+var artist = (string) currentTrack["artist"];
+var label = (string) currentTrack["label"];
+
+var info = $"{title} - {artist} - {label}";
+
+info.Display();

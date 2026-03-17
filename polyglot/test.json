@@ -1,0 +1,107 @@
+{
+    "@context": "https:\/\/schema.org",
+    "@type": "Event",
+    "name": "172 Fryday Crew -DnB Raid Train 20 Feb. 2026",
+    "image": "https:\/\/cdn.raidpal.com\/userdata\/event\/img\/header\/thumb\/1650879376976b6575c8731.18212664_1769387607.png",
+    "description": "",
+    "startDate": "2026-02-20T13:00-00:00",
+    "endDate": "2026-02-21T04:00-00:00",
+    "eventAttendanceMode": "https:\/\/schema.org\/OnlineEventAttendanceMode",
+    "eventStatus": "https:\/\/schema.org\/EventScheduled",
+    "location": {
+        "@type": "VirtualLocation",
+        "url": "https:\/\/raidpal.com\/en\/event\/172-fryday-crew-dnb-raid-train-20-feb-2026"
+    },
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https:\/\/schema.org\/InStock",
+        "validFrom": "2026-02-20T13:00-00:00"
+    },
+    "organizer": {
+        "@type": "Organization",
+        "name": "Klormak_dj",
+        "url": "https:\/\/twitch.tv\/Klormak_dj"
+    },
+    "performer": [
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/b9dfc134-b069-4d94-936e-3de0aa2e69fd-profile_image-300x300.png",
+            "name": "DJDebsta",
+            "url": "https:\/\/raidpal.com\/en\/profile\/djdebsta"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/529212e1-a01c-49fe-aed4-846b052bf153-profile_image-300x300.jpeg",
+            "name": "DJLyno",
+            "url": "https:\/\/raidpal.com\/en\/profile\/djlyno"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/6cc5a119-c351-400a-956a-c6b960cfbcd8-profile_image-300x300.png",
+            "name": "MariaTurme",
+            "url": "https:\/\/raidpal.com\/en\/profile\/mariaturme"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/05030c79-d433-4dff-80d4-bcdba5b38348-profile_image-300x300.png",
+            "name": "flow_dee",
+            "url": "https:\/\/raidpal.com\/en\/profile\/flow_dee"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/e6ac557c-1e06-4e95-a588-1ce5e3552c8b-profile_image-300x300.png",
+            "name": "Thiieuu",
+            "url": "https:\/\/raidpal.com\/en\/profile\/thiieuu"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/ef7ffed6-4149-41dd-9c1d-7bfdc109c1d7-profile_image-300x300.jpeg",
+            "name": "NickeedeeDJ",
+            "url": "https:\/\/raidpal.com\/en\/profile\/nickeedeedj"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/feddc499-ebeb-42d2-83e3-d130dc35bf15-profile_image-300x300.png",
+            "name": "DJ_Vampyre",
+            "url": "https:\/\/raidpal.com\/en\/profile\/dj_vampyre"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/b7cc0011-88ef-427d-a663-5fbf21f462a8-profile_image-300x300.png",
+            "name": "DJSMdnb",
+            "url": "https:\/\/raidpal.com\/en\/profile\/djsmdnb"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/e2d38712-ee22-44a5-ab67-ec20689194e7-profile_image-300x300.png",
+            "name": "cryogenix_00",
+            "url": "https:\/\/raidpal.com\/en\/profile\/cryogenix_00"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/e1bc5630-51b3-4737-ae6f-4d00e62a4b28-profile_image-300x300.png",
+            "name": "kwrk",
+            "url": "https:\/\/raidpal.com\/en\/profile\/kwrk"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/f19a48a9-e3e6-41cd-8aef-08518fe1e5f0-profile_image-300x300.png",
+            "name": "PlethoTechno",
+            "url": "https:\/\/raidpal.com\/en\/profile\/plethotechno"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/b5ede9e0-4468-4d1e-99cc-be15f7ed4040-profile_image-300x300.png",
+            "name": "foodfarmer",
+            "url": "https:\/\/raidpal.com\/en\/profile\/foodfarmer"
+        },
+        {
+            "@type": "Person",
+            "image": "https:\/\/cdn.raidpal.com\/userdata\/user\/img\/profile\/thumb\/de718037-d62d-47f1-87d6-608d21045d90-profile_image-300x300.png",
+            "name": "Skoobah_",
+            "url": "https:\/\/raidpal.com\/en\/profile\/skoobah_"
+        }
+    ]
+}

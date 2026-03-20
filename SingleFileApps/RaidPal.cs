@@ -6,7 +6,7 @@ using System.Globalization;
 using HtmlAgilityPack;
 
 var eventUrl = "https://raidpal.com/en/event/172-fryday-crew-dnb-raid-train-20-march-2026";
-eventUrl = "https://raidpal.com/en/event/172-fryday-crew-dnb-raid-train-13-march-2026";
+//eventUrl = "https://raidpal.com/en/event/172-fryday-crew-dnb-raid-train-13-march-2026";
 var slotUrl = "https://raidpal.com/template/mods/mod_raidpal/assets/event_slots.php?id=";
 var client = new HttpClient();
 var doc = new HtmlDocument();

@@ -48,6 +48,14 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Lineup")),
+    RequestPath = "/Lineup",
+    ServeUnknownFileTypes = true
+});
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Templates", "Default")),
     RequestPath = "/Templates/Default",
     ServeUnknownFileTypes = true

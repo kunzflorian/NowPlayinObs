@@ -1,7 +1,7 @@
 ﻿@page "/lineup"
 @using NowPlayinObs.Services
 @using NowPlayinObs.Domain;
-@rendermode InteractiveServer
+@rendermode InteractiveWebAssembly
 @inject ILineupService ILinupService
 @code {
     IEnumerable<Slot> _slots = [];
@@ -67,7 +67,7 @@
                 @foreach (var slot in _slots)
                 {
                     <div>
-                        <div class="date">@slot.Start</div>
+                        <div class="date"> @slot.Start.ToString("yyyy-MM-dd HH:00 UTC").Replace('-', '/')</div>
                         <div class="artist">@slot.Streamer</div>
                     </div>
                 }
